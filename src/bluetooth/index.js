@@ -1,8 +1,7 @@
 var events = require('events');
 var util = require('util');
 var artik = require('artik-sdk');
-console.log('artik', artik)
-if (!!artik.bluetooth) {
+if (artik.bluetooth) {
 	module.exports = artik.bluetooth
 } else {
 
