@@ -7,7 +7,7 @@ module.exports.artik305 = require('./platform/artik305');
 module.exports.eagleye530 = require('./platform/eagleye530');
 
 /* Addon exports */
-var artik = require('../build/Release/artik-sdk.node');
+var artik = require('artik-sdk');
 
 module.exports.get_modules = artik.get_modules;
 module.exports.get_platform = artik.get_platform;
