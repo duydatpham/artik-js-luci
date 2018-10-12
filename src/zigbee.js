@@ -476,7 +476,7 @@ if (!!zigbee && !!zigbee.network_form) {
      * - ezmode_commissioning_target_start()
      * - ezmode_commissioning_target_stop()
      */
-    ONOFF_LIGHT: require('../build/Release/artik-sdk.node').zigbee_onoff_light,
+    ONOFF_LIGHT: require('artik-sdk').zigbee_onoff_light,
     /**
      * On/Off Switch
      *
@@ -489,7 +489,7 @@ if (!!zigbee && !!zigbee.network_form) {
      * - ezmode_commissioning_initiator_start()
      * - ezmode_commissioning_initiator_stop()
      */
-    ONOFF_SWITCH: require('../build/Release/artik-sdk.node').zigbee_onoff_switch,
+    ONOFF_SWITCH: require('artik-sdk').zigbee_onoff_switch,
     /**
      * Level Control Switch
      *
@@ -503,7 +503,7 @@ if (!!zigbee && !!zigbee.network_form) {
      * - ezmode_commissioning_initiator_start()
      * - ezmode_commissioning_initiator_stop()
      */
-    LEVELCONTROL_SWITCH: require('../build/Release/artik-sdk.node').zigbee_levelcontrol_switch,
+    LEVELCONTROL_SWITCH: require('artik-sdk').zigbee_levelcontrol_switch,
     /**
      * Dimmable Light
      *
@@ -517,7 +517,7 @@ if (!!zigbee && !!zigbee.network_form) {
      * - ezmode_commissioning_target_start()
      * - ezmode_commissioning_target_stop()
      */
-    DIMMABLE_LIGHT: require('../build/Release/artik-sdk.node').zigbee_dimmable_light,
+    DIMMABLE_LIGHT: require('artik-sdk').zigbee_dimmable_light,
     /**
      * Light Sensor
      *
@@ -532,7 +532,7 @@ if (!!zigbee && !!zigbee.network_form) {
      * - ezmode_commissioning_initiator_start()
      * - ezmode_commissioning_initiator_stop()
      */
-    LIGHT_SENSOR: require('../build/Release/artik-sdk.node').zigbee_light_sensor,
+    LIGHT_SENSOR: require('artik-sdk').zigbee_light_sensor,
     /**
      * Remote Control
      *
@@ -549,6 +549,6 @@ if (!!zigbee && !!zigbee.network_form) {
      * - ezmode_commissioning_target_start()
      * - ezmode_commissioning_target_stop()
      */
-    REMOTE_CONTROL: require('../build/Release/artik-sdk.node').zigbee_remote_control
+    REMOTE_CONTROL: require('artik-sdk').zigbee_remote_control
   }
 }
