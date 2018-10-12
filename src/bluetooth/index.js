@@ -1,9 +1,9 @@
 var events = require('events');
 var util = require('util');
 var artik = require('artik-sdk');
-
-if (!!artik.GattClient) {
-	module.exports = artik
+console.log('artik', artik)
+if (!!artik.bluetooth) {
+	module.exports = artik.bluetooth
 } else {
 
 	var Filter = function (rssi, uuids, type) {
