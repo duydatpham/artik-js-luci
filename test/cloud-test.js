@@ -97,6 +97,56 @@ if (akc_expires_at < time) {
 	});
 }
 
+var response = cloud2.get_device_properties(device_id, timestamp, ssl_config);
+var akc_auth_token = JSON.parse(response).data.serverProperties.akc_auth_token;
+var akc_basic_token = JSON.parse(response).data.serverProperties.akc_basic_token;
+var akc_refresh_token = JSON.parse(response).data.serverProperties.akc_refresh_token;
+var akc_expires_at = JSON.parse(response).data.serverProperties.akc_expires_at;
+
+var cloud	= new artik.cloud(akc_auth_token);
+
+var date = new Date().getTime();
+time = Math.floor(date/1000);
+
+if (akc_expires_at < time) {
+
+	console.log("akc_auth_token is expired");
+
+	/* Refresh AKC API TOKEN */
+	var headers = [ "Authorization", "Basic " + akc_basic_token ];
+	var url = "https://accounts.artik.cloud/token?grant_type=refresh_token&refresh_token=" + akc_refresh_token;
+
+	http.post(url, headers, null, ssl_config, function(response, status) {
+
+		if (status != 200) {
+			console.log("Post failed");
+			process.exit(-1);
+		}
+
+		/* SET SERVER PROPERTIES WITH NEW akc_auth_token, akc_refresh_token, akc_expires_at */
+		akc_auth_token = JSON.parse(response).access_token;
+		akc_refresh_token = JSON.parse(response).refresh_token;
+		akc_expires_at = time + JSON.parse(response).expires_in;
+
+		if (!device_id || !server_props || !device_id.length || !server_props.length) {
+			console.log("Error to update server properties");
+			process.exit(-1);
+		}
+
+		var server_properties = {
+			akc_auth_token: akc_auth_token,
+			akc_refresh_token: akc_refresh_token,
+			akc_expires_at: akc_expires_at,
+		};
+
+		cloud2.set_device_server_properties(device_id, JSON.stringify(server_properties), function(err, response) {
+			console.log(err);
+			console.log(response);
+			cloud	= new artik.cloud(akc_auth_token);
+		});
+	});
+}
+
 
 /* Test Case Module */
 testCase('Cloud', function() {
@@ -409,7 +459,7 @@ testCase('Cloud', function() {
 				this.skip();
 
 			var response = cloud2.get_device_properties(device_id, timestamp, ssl_config);
-			assert.notInclude(response, "error");
+			assert.isObject(JSON.parse(response).data.systemProperties);
 			done();
 		});
 

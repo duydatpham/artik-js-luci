@@ -1,8 +1,13 @@
 var events = require('events');
 var util = require('util');
-var artik = require('../../build/Release/artik-sdk.node');
+var artik = require('artik-sdk');
 
-artik.RemoteCharacteristic.prototype.__proto__ = events.EventEmitter.prototype;
-artik.GattClient.prototype.__proto__ = events.EventEmitter.prototype;
+if (!!artik.RemoteCharacteristic) {
+    module.exports = artik.GattClient
+} else {
 
-module.exports = artik.GattClient;
+    artik.RemoteCharacteristic.prototype.__proto__ = events.EventEmitter.prototype;
+    artik.GattClient.prototype.__proto__ = events.EventEmitter.prototype;
+
+    module.exports = artik.GattClient;
+}

@@ -63,7 +63,7 @@ testCase('Cloud-Websockets', function() {
 
 			conn.on('receive', on_received);
 
-			conn.websocket_open_stream(auth_token, device_id, ping_period, pong_timeout, ssl_config);
+			conn.websocket_open_stream(auth_token, device_id, ssl_config);
 		});
 
 	});

@@ -1,4 +1,5 @@
 # ARTIK-SDK
+<<<<<<< HEAD
    > This README explains how to use the node.js module for using the ARTIK SDK with JavaScript.
 
 ## Prerequisites
@@ -77,3 +78,6 @@ Then install the node.js module:
 
 ### 11. CoAP
   * [CoAP API](/doc/COAP_README.md)
+=======
+   > This base on Artick sdk
+>>>>>>> 1.8-maintenance
