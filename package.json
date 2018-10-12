@@ -1,6 +1,6 @@
 {
-  "name": "artik-sdk-luci",
-  "version": "1.9.1",
+  "name": "artik-js-luci",
+  "version": "0.0.1",
   "description": "SDK for developing applications for Samsung's ARTIK platform",
   "main": "src/index.js",
   "scripts": {
@@ -33,7 +33,7 @@
   "homepage": "http://www.artik.io",
   "repository": {
     "type": "git",
-    "url": "git://github.com/duydatpham/artik-sdk-js.git"
+    "url": "git://github.com/duydatpham/artik-js-luci.git"
   },
   "dependencies": {
     "colors": "^1.1.2",
